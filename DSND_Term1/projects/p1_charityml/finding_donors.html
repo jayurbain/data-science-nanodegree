@@ -13159,7 +13159,7 @@ It is a ratio of true positives(words classified as spam, and which are actually
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
@@ -13170,15 +13170,16 @@ It is a ratio of true positives(words classified as spam, and which are actually
 <span class="sd">TN = 0 # No predicted negatives in the naive case</span>
 <span class="sd">FN = 0 # No predicted negatives in the naive case</span>
 <span class="sd">&#39;&#39;&#39;</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">precision_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">recall_score</span>
+
 <span class="n">TP</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">income</span><span class="p">)</span> 
 <span class="n">FP</span> <span class="o">=</span> <span class="n">income</span><span class="o">.</span><span class="n">count</span><span class="p">()</span> <span class="o">-</span> <span class="n">TP</span> 
-
 <span class="n">TN</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># No predicted negatives in the naive case</span>
 <span class="n">FN</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># No predicted negatives in the naive case</span>
 
 <span class="c1"># TODO: Calculate accuracy, precision and recall</span>
 <span class="n">y_pred</span> <span class="o">=</span> <span class="n">y_test</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">y_pred</span><span class="p">[:]</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">accuracy</span> <span class="o">=</span> <span class="p">(</span><span class="n">TP</span><span class="o">+</span><span class="n">TN</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">TP</span><span class="o">+</span><span class="n">TN</span><span class="o">+</span><span class="n">FP</span><span class="o">+</span><span class="n">FN</span><span class="p">)</span>
 <span class="n">recall</span> <span class="o">=</span> <span class="p">(</span><span class="n">TP</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">TP</span><span class="o">+</span><span class="n">FN</span><span class="p">)</span>
 <span class="n">precision</span> <span class="o">=</span> <span class="p">(</span><span class="n">TP</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">TP</span><span class="o">+</span><span class="n">FP</span><span class="p">)</span>
@@ -13204,7 +13205,7 @@ It is a ratio of true positives(words classified as spam, and which are actually
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Naive Predictor: [Accuracy score: 0.2478, F-score: 0.3098]
+<pre>Naive Predictor: [Accuracy score: 0.2478, F-score: 0.2917]
 </pre>
 </div>
 </div>
@@ -13808,7 +13809,7 @@ Final F-score on the testing data: 0.7542
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="prompt input_prompt">In&nbsp;[56]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">best_clf</span>
@@ -13824,7 +13825,7 @@ Final F-score on the testing data: 0.7542
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[36]:</div>
+<div class="prompt output_prompt">Out[56]:</div>
 
 
 
@@ -13891,7 +13892,7 @@ Optimized model f-score_improvement over naive 145.45 %</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[39]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Optimized model accuracy improvement over unoptimized&#39;</span><span class="p">,</span> <span class="nb">round</span><span class="p">((</span><span class="mf">0.8610</span><span class="o">/</span><span class="mf">0.8407</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;%&#39;</span><span class="p">)</span>
@@ -13899,7 +13900,7 @@ Optimized model f-score_improvement over naive 145.45 %</p>
 
 <span class="c1"># Naive Predictor: [Accuracy score: 0.2478, F-score: 0.3098]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Optimized model accuracy improvement over naive&#39;</span><span class="p">,</span> <span class="nb">round</span><span class="p">((</span><span class="mf">0.8610</span><span class="o">/</span><span class="mf">0.2478</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;%&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Optimized model f-score_improvement over naive&#39;</span><span class="p">,</span> <span class="nb">round</span><span class="p">((</span><span class="mf">0.7542</span><span class="o">/</span><span class="mf">0.3098</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;%&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Optimized model f-score_improvement over naive&#39;</span><span class="p">,</span> <span class="nb">round</span><span class="p">((</span><span class="mf">0.7542</span><span class="o">/</span><span class="mf">0.2917</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;%&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -13919,7 +13920,7 @@ Optimized model f-score_improvement over naive 145.45 %</p>
 <pre>Optimized model accuracy improvement over unoptimized 2.41 %
 Optimized model f-score_improvement over unoptimized 8.63 %
 Optimized model accuracy improvement over naive 247.46 %
-Optimized model f-score_improvement over naive 143.45 %
+Optimized model f-score_improvement over naive 158.55 %
 </pre>
 </div>
 </div>
@@ -13982,7 +13983,7 @@ Optimized model f-score_improvement over naive 143.45 %
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="prompt input_prompt">In&nbsp;[58]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: Import a supervised learning model that has &#39;feature_importances_&#39;</span>
@@ -14069,7 +14070,7 @@ I was close!</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[41]:</div>
+<div class="prompt input_prompt">In&nbsp;[59]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Import functionality for cloning a model</span>
@@ -14141,7 +14142,7 @@ F-score on testing data: 0.7207
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[49]:</div>
+<div class="prompt input_prompt">In&nbsp;[60]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="mf">0.8610</span><span class="o">-</span><span class="mf">0.8462</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
@@ -14211,7 +14212,7 @@ It would depend on whether the decrease in F-score as acceptable for the applica
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[50]:</div>
+<div class="prompt input_prompt">In&nbsp;[61]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">!!</span>jupyter nbconvert *.ipynb
@@ -14227,14 +14228,14 @@ It would depend on whether the decrease in F-score as acceptable for the applica
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[50]:</div>
+<div class="prompt output_prompt">Out[61]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
 <pre>[&#39;[NbConvertApp] Converting notebook finding_donors.ipynb to html&#39;,
- &#39;[NbConvertApp] Writing 872500 bytes to finding_donors.html&#39;]</pre>
+ &#39;[NbConvertApp] Writing 872961 bytes to finding_donors.html&#39;]</pre>
 </div>
 
 </div>
